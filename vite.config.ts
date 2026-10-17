@@ -5,7 +5,7 @@ import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite-plus";
 
 export default defineConfig({
-	plugins: [react(), tailwindcss()],
+	plugins: [react({ compiler: true }), tailwindcss()],
 	resolve: {
 		alias: {
 			"@": path.resolve(import.meta.dirname, "./src"),
