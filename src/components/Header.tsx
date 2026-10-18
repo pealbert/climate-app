@@ -20,7 +20,8 @@ const Header = () => {
 				</Link>
 
 				<div>
-					<div
+					<button
+						type="button"
 						onClick={() => setTheme(isDark ? "light" : "dark")}
 						className={cn(
 							"flex cursor-pointer items-center transition-transform duration-500",
@@ -32,7 +33,7 @@ const Header = () => {
 						) : (
 							<Moon className="size-6 rotate-0 text-blue-500 transition-all" />
 						)}
-					</div>
+					</button>
 				</div>
 			</div>
 		</header>

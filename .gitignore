@@ -25,4 +25,11 @@ dist-ssr
 !.vscode/
 !.vscode/settings.json
 !.vscode/extensions.json
-.env
+
+# Environment files
+.env*
+!.env.example
+
+# Test output
+coverage/
+.vitest/
