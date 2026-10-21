@@ -1,5 +1,6 @@
 import { AlertTriangle, MapPin, RefreshCw } from "lucide-react";
 
+import CurrentWeather from "@/components/CurrentWeather";
 import WeatherSkeleton from "@/components/LoadingSkeleton";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
@@ -97,6 +98,14 @@ const WeatherDashboard = () => {
 				>
 					<RefreshCw className={cn("size-4", weatherQuery.isFetching ? "animate-spin" : "")} />
 				</Button>
+			</div>
+
+			<div className="grid gap-6">
+				<div>
+					<CurrentWeather data={weatherQuery.data} locationName={locationName} />
+				</div>
+
+				<div></div>
 			</div>
 		</div>
 	);
