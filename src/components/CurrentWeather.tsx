@@ -1,6 +1,6 @@
 import { ArrowDown, ArrowUp, Droplets, Wind } from "lucide-react";
 
-import type { WeatherData, GeocodingResponse } from "@/api/types";
+import type { GeocodingResponse, WeatherData } from "@/api/types";
 import { Card, CardContent } from "@/components/ui/card";
 
 interface CurrentWeatherProps {
@@ -67,6 +67,19 @@ const CurrentWeather = ({ data, locationName }: CurrentWeatherProps) => {
 									<p className="text-sm font-medium">Wind Speed</p>
 									<p className="text-sm text-muted-foreground">{speed} m/s</p>
 								</div>
+							</div>
+						</div>
+					</div>
+
+					<div className="flex flex-col items-center justify-center">
+						<div className="relative flex aspect-square w-full max-w-50 items-center justify-center">
+							<img
+								className="size-full object-contain"
+								src={`https://openweathermap.org/img/wn/${currentWeather.icon}@4x.png`}
+								alt={currentWeather.description}
+							/>
+							<div className="absolute bottom-0 text-center">
+								<p className="text-sm font-medium capitalize">{currentWeather.description}</p>
 							</div>
 						</div>
 					</div>
