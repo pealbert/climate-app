@@ -5,6 +5,7 @@ import HourlyTemperature from "@/components/HourlyTemperature";
 import WeatherSkeleton from "@/components/LoadingSkeleton";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
+import WeatherDetails from "@/components/WeatherDetails";
 import { useGeolocation } from "@/hooks/use-geolocation";
 import { useForecastQuery, useReverseGeocodeQuery, useWeatherQuery } from "@/hooks/use-weather";
 import { cn } from "@/lib/utils";
@@ -24,9 +25,9 @@ const WeatherDashboard = () => {
 	const handleRefresh = () => {
 		getLocation();
 		if (coordinates) {
-			weatherQuery.refetch();
-			forecastQuery.refetch();
-			locationQuery.refetch();
+			void weatherQuery.refetch();
+			void forecastQuery.refetch();
+			void locationQuery.refetch();
 		}
 	};
 
@@ -107,7 +108,9 @@ const WeatherDashboard = () => {
 					<HourlyTemperature data={forecastQuery.data} />
 				</div>
 
-				<div></div>
+				<div>
+					<WeatherDetails data={weatherQuery.data} />
+				</div>
 			</div>
 		</div>
 	);
