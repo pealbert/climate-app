@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import { useTheme } from "@/context/ThemeProvider";
 import { cn } from "@/lib/utils";
 
+import CitySearch from "./CitySearch";
+
 const Header = () => {
 	const { theme, setTheme } = useTheme();
 	const isDark = theme === "dark";
@@ -19,7 +21,9 @@ const Header = () => {
 					/>
 				</Link>
 
-				<div>
+				<div className="flex gap-4">
+					<CitySearch />
+
 					<button
 						type="button"
 						onClick={() => setTheme(isDark ? "light" : "dark")}
