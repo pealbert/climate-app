@@ -1,6 +1,7 @@
 import { AlertTriangle, MapPin, RefreshCw } from "lucide-react";
 
 import CurrentWeather from "@/components/CurrentWeather";
+import FavoriteCities from "@/components/FavoriteCities";
 import HourlyTemperature from "@/components/HourlyTemperature";
 import WeatherSkeleton from "@/components/LoadingSkeleton";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
@@ -90,7 +91,9 @@ const WeatherDashboard = () => {
 	}
 
 	return (
-		<div className="space-y-4">
+		<div className="min-w-0 space-y-4 sm:space-y-6">
+			<FavoriteCities />
+
 			<div className="flex items-center justify-between">
 				<h1 className="text-xl font-bold tracking-tight">My Location</h1>
 				<Button
@@ -103,13 +106,13 @@ const WeatherDashboard = () => {
 				</Button>
 			</div>
 
-			<div className="grid gap-6">
-				<div className="flex flex-col gap-4 lg:flex-row">
+			<div className="grid min-w-0 gap-4 sm:gap-6">
+				<div className="flex min-w-0 flex-col gap-4 lg:flex-row">
 					<CurrentWeather data={weatherQuery.data} locationName={locationName} />
 					<HourlyTemperature data={forecastQuery.data} />
 				</div>
 
-				<div className="grid items-start gap-6 md:grid-cols-2">
+				<div className="grid min-w-0 items-start gap-4 sm:gap-6 md:grid-cols-2">
 					<WeatherDetails data={weatherQuery.data} />
 					<WeatherForecast data={forecastQuery.data} />
 				</div>

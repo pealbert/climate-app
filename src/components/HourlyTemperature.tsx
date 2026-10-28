@@ -16,12 +16,12 @@ const HourlyTemperature = ({ data }: HourlyTemperatureProps) => {
 	}));
 
 	return (
-		<Card className="flex-1">
+		<Card className="min-w-0 flex-1">
 			<CardHeader>
 				<CardTitle>Today's Temperature</CardTitle>
 			</CardHeader>
-			<CardContent>
-				<div className="h-50 w-full">
+			<CardContent className="px-2 sm:px-4">
+				<div className="h-48 w-full min-w-0 sm:h-50">
 					<ResponsiveContainer width="100%" height="100%">
 						<LineChart data={chartData}>
 							<XAxis dataKey="time" stroke="#888" fontSize={12} tickLine={false} axisLine={false} />

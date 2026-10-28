@@ -51,26 +51,26 @@ const WeatherForecast = ({ data }: WeatherForecastProps) => {
 	const formatTemp = (temp: number) => `${Math.round(temp)}°`;
 
 	return (
-		<Card>
+		<Card className="min-w-0">
 			<CardHeader>
 				<CardTitle>5-Day Forecast</CardTitle>
 			</CardHeader>
 			<CardContent>
-				<div className="grid gap-4">
+				<div className="grid gap-3 sm:gap-4">
 					{nextDays.map((day) => {
 						return (
 							<div
 								key={day.date}
-								className="grid grid-cols-3 items-center gap-4 rounded-lg border p-4"
+								className="flex min-w-0 flex-wrap items-center gap-x-4 gap-y-3 rounded-lg border p-3 sm:p-4"
 							>
-								<div>
+								<div className="min-w-32 flex-1">
 									<p className="font-medium">{format(new Date(day.date * 1000), "EEE, MMM d")}</p>
-									<p className="text-sm text-muted-foreground capitalize">
+									<p className="truncate text-sm text-muted-foreground capitalize">
 										{day.weather.description}
 									</p>
 								</div>
 
-								<div className="flex justify-center gap-4">
+								<div className="flex shrink-0 justify-center gap-3 sm:gap-4">
 									<span className="flex items-center text-blue-500">
 										<ArrowDown className="mr-1 size-4" />
 										{formatTemp(day.temp_min)}
@@ -81,7 +81,7 @@ const WeatherForecast = ({ data }: WeatherForecastProps) => {
 									</span>
 								</div>
 
-								<div className="flex justify-end gap-4">
+								<div className="flex shrink-0 justify-end gap-3 sm:gap-4">
 									<span className="flex items-center gap-1">
 										<Droplets className="size-4 text-blue-500" />
 										<span className="text-sm">{day.humidity}%</span>

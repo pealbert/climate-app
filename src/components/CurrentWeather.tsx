@@ -14,26 +14,30 @@ const CurrentWeather = ({ data, locationName }: CurrentWeatherProps) => {
 		main: { temp, feels_like, temp_min, temp_max, humidity },
 		wind: { speed },
 	} = data;
+	const displayName = locationName?.name ?? data.name;
+	const displayCountry = locationName?.country ?? data.sys.country;
 
 	const formatTemp = (temp: number) => `${Math.round(temp)}°`;
 
 	return (
-		<Card className="overflow-hidden">
-			<CardContent className="p-6">
-				<div className="grid gap-6 md:grid-cols-2">
+		<Card className="min-w-0 flex-1 overflow-hidden">
+			<CardContent className="p-4 sm:p-6">
+				<div className="grid min-w-0 gap-4 sm:grid-cols-[minmax(0,1fr)_10rem] sm:items-center md:grid-cols-2 md:gap-6">
 					<div className="space-y-4">
 						<div className="space-y-2">
-							<div className="flex items-end gap-1">
-								<h2 className="text-2xl font-bold tracking-tighter">{locationName?.name}</h2>
+							<div className="flex min-w-0 flex-wrap items-end gap-x-2">
+								<h2 className="min-w-0 text-2xl font-bold tracking-tighter wrap-break-word">
+									{displayName}
+								</h2>
 								{locationName?.state && (
-									<span className="text-muted-foreground">{locationName.state}</span>
+									<span className="mb-0.5 text-muted-foreground">{locationName.state}</span>
 								)}
 							</div>
-							<p className="text-sm text-muted-foreground">{locationName?.country}</p>
+							<p className="text-sm text-muted-foreground">{displayCountry}</p>
 						</div>
 
-						<div className="flex items-center gap-2">
-							<p className="text-7xl font-bold tracking-tighter">{formatTemp(temp)}</p>
+						<div className="flex flex-wrap items-center gap-2">
+							<p className="text-6xl font-bold tracking-tighter sm:text-7xl">{formatTemp(temp)}</p>
 
 							<div className="space-y-1">
 								<p className="text-sm font-medium text-muted-foreground">
@@ -52,7 +56,7 @@ const CurrentWeather = ({ data, locationName }: CurrentWeatherProps) => {
 							</div>
 						</div>
 
-						<div className="grid grid-cols-2 gap-4">
+						<div className="grid grid-cols-2 gap-3 sm:gap-4">
 							<div className="flex items-center gap-2">
 								<Droplets className="size-4 text-blue-500" />
 								<div className="space-y-0.5">
@@ -72,7 +76,7 @@ const CurrentWeather = ({ data, locationName }: CurrentWeatherProps) => {
 					</div>
 
 					<div className="flex flex-col items-center justify-center">
-						<div className="relative flex aspect-square w-full max-w-50 items-center justify-center">
+						<div className="relative flex aspect-square w-full max-w-32 items-center justify-center sm:max-w-40 md:max-w-50">
 							<img
 								className="size-full object-contain"
 								src={`https://openweathermap.org/img/wn/${currentWeather.icon}@4x.png`}

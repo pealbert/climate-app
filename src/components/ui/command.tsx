@@ -41,15 +41,18 @@ function CommandDialog({
 }) {
 	return (
 		<Dialog {...props}>
-			<DialogHeader className="sr-only">
-				<DialogTitle>{title}</DialogTitle>
-				<DialogDescription>{description}</DialogDescription>
-			</DialogHeader>
 			<DialogContent
-				className={cn("top-1/3 translate-y-0 overflow-hidden rounded-xl! p-0", className)}
+				className={cn(
+					"top-2 max-h-[calc(100dvh-1rem)] max-w-[calc(100%-1rem)] translate-y-0 overflow-hidden rounded-xl! p-0 sm:top-1/3 sm:max-h-[70dvh] sm:max-w-lg",
+					className,
+				)}
 				showCloseButton={showCloseButton}
 			>
-				{children}
+				<DialogHeader className="sr-only">
+					<DialogTitle>{title}</DialogTitle>
+					<DialogDescription>{description}</DialogDescription>
+				</DialogHeader>
+				<Command className="min-h-0">{children}</Command>
 			</DialogContent>
 		</Dialog>
 	);
@@ -83,7 +86,7 @@ function CommandList({ className, ...props }: React.ComponentProps<typeof Comman
 		<CommandPrimitive.List
 			data-slot="command-list"
 			className={cn(
-				"no-scrollbar max-h-72 scroll-py-1 overflow-x-hidden overflow-y-auto outline-none",
+				"no-scrollbar max-h-72 min-h-0 scroll-py-1 overflow-x-hidden overflow-y-auto outline-none",
 				className,
 			)}
 			{...props}
